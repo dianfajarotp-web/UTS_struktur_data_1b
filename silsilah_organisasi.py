@@ -3,7 +3,7 @@
 # Struktur Data : General Tree (N-ary Tree) Berbasis OOP
 # ==============================================================================
 
-# === [MULAI JAWABAN SOAL NOMOR 3: STRUKTUR DATA TREE] ===
+
 class PegawaiNode:
     """Representasi simpul (Node) entitas pegawai/jabatan dalam General Tree."""
     def __init__(self, id_pegawai: str, nama: str, jabatan: str):
@@ -21,9 +21,9 @@ class SilsilahOrganisasiTree:
     """Representasi struktur Tree untuk mengelola hierarki Silsilah Organisasi."""
     def __init__(self, root_id: str, root_nama: str, root_jabatan: str):
         self.root = PegawaiNode(root_id, root_nama, root_jabatan)
-# === [AKHIR JAWABAN SOAL NOMOR 3] ===
 
-    # === [MULAI JAWABAN SOAL NOMOR 6: OPERASI PENYISIPAN DATA] ===
+
+   
     def insert_node(self, atasan_key: str, id_baru: str, nama_baru: str, jabatan_baru: str) -> bool:
         """Menyisipkan pegawai/jabatan baru di bawah atasan tertentu."""
         atasan_node = self.search_node(atasan_key)
@@ -44,9 +44,8 @@ class SilsilahOrganisasiTree:
         target_node.parent.children.remove(target_node)
         target_node.parent = None
         return True
-    # === [AKHIR JAWABAN SOAL NOMOR 6] ===
 
-    # === [MULAI JAWABAN SOAL NOMOR 7: OPERASI PENCARIAN DATA] ===
+
     def search_node(self, keyword: str, current_node: PegawaiNode = None) -> PegawaiNode:
         """Mencari data pegawai berdasarkan ID, Nama, atau Jabatan secara rekursif (DFS)."""
         if self.root is None:
@@ -68,9 +67,7 @@ class SilsilahOrganisasiTree:
                 return hasil
 
         return None
-    # === [AKHIR JAWABAN SOAL NOMOR 7] ===
-
-    # === [MULAI JAWABAN SOAL NOMOR 8: PREORDER TRAVERSAL] ===
+    
     def preorder_traversal(self, node: PegawaiNode = None, hasil: list = None) -> list:
         """Preorder Traversal: Kunjungi Root -> Kunjungi seluruh anak dari kiri ke kanan."""
         if hasil is None:
@@ -82,9 +79,7 @@ class SilsilahOrganisasiTree:
         for child in node.children:
             self.preorder_traversal(child, hasil)
         return hasil
-    # === [AKHIR JAWABAN SOAL NOMOR 8] ===
 
-    # === [MULAI JAWABAN SOAL NOMOR 9: INORDER TRAVERSAL] ===
     def inorder_traversal(self, node: PegawaiNode = None, hasil: list = None) -> list:
         """Inorder Traversal General Tree: Anak Pertama -> Root -> Sisa Anak."""
         if hasil is None:
@@ -101,9 +96,8 @@ class SilsilahOrganisasiTree:
         for i in range(1, total_anak):
             self.inorder_traversal(node.children[i], hasil)
         return hasil
-    # === [AKHIR JAWABAN SOAL NOMOR 9] ===
 
-    # === [MULAI JAWABAN SOAL NOMOR 10: POSTORDER TRAVERSAL] ===
+    
     def postorder_traversal(self, node: PegawaiNode = None, hasil: list = None) -> list:
         """Postorder Traversal: Kunjungi seluruh anak dari kiri ke kanan -> Kunjungi Root."""
         if hasil is None:
@@ -115,10 +109,9 @@ class SilsilahOrganisasiTree:
             self.postorder_traversal(child, hasil)
         hasil.append(node.jabatan)
         return hasil
-    # === [AKHIR JAWABAN SOAL NOMOR 10] ===
 
     # ==========================================================================
-    # FITUR TAMBAHAN VISUAL & ANALISIS (UNTUK DEMO VIDEO PRESENTASI)
+    #  VISUAL & ANALISIS 
     # ==========================================================================
     def tampilkan_bagan(self, node: PegawaiNode = None, prefix: str = "", is_last: bool = True):
         """Mencetak visualisasi bagan struktur organisasi persis seperti gambar Soal 11."""
@@ -155,7 +148,7 @@ class SilsilahOrganisasiTree:
 
 
 # ==============================================================================
-# INISIALISASI DATA 18 SIMPUL SESUAI GAMBAR SOAL NOMOR 11
+# INISIALISASI DATA 18 SIMPUL 
 # ==============================================================================
 def bangun_data_uin_suska() -> SilsilahOrganisasiTree:
     tree = SilsilahOrganisasiTree("UIN-01", "Prof. Dr. Hairunas, M.Ag.", "Rektor (Root)")
@@ -191,7 +184,7 @@ def bangun_data_uin_suska() -> SilsilahOrganisasiTree:
 
 
 # ==============================================================================
-# MODE 1: EKSEKUSI LANGSUNG / RINGKAS (GAYA OPSI A)
+# EKSEKUSI LANGSUNG 
 # ==============================================================================
 def jalankan_mode_ringkas(tree: SilsilahOrganisasiTree):
     print("\n" + "="*70)
@@ -224,7 +217,7 @@ def jalankan_mode_ringkas(tree: SilsilahOrganisasiTree):
 
 
 # ==============================================================================
-# MODE 2: MENU INTERAKTIF VISUAL (GAYA OPSI B - UNTUK DEMO VIDEO)
+#  MENU INTERAKTIF VISUAL 
 # ==============================================================================
 def jalankan_mode_interaktif(tree: SilsilahOrganisasiTree):
     while True:
